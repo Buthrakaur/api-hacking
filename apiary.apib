@@ -46,6 +46,7 @@ Get layer 1 data for given bounding box.
                 "photos": ["http://lorempixel.com/800/533/"],
                 "tourCount": 4,
                 "languages": ["en"],
+                "bounds": "103.75693,13.31905,104.00830,13.51654",
             },
             {
                 "id": "1",
@@ -53,6 +54,7 @@ Get layer 1 data for given bounding box.
                 "photos": ["http://lorempixel.com/800/533/"],
                 "tourCount": 7,
                 "languages": ["en", "cs", "de"],
+                "bounds": "14.22444,49.94190,14.70679,50.17743",
             }
         ]
 
@@ -69,6 +71,7 @@ Get layer 1 data for given bounding box.
                 "photos": ["http://lorempixel.com/800/533/"],
                 "tourCount": 7,
                 "languages": ["en", "cs", "de"],
+                "bounds": "14.22444,49.94190,14.70679,50.17743",
             },
             {
                 "id": "2",
@@ -76,6 +79,7 @@ Get layer 1 data for given bounding box.
                 "photos": ["http://lorempixel.com/800/533/"],
                 "tourCount": 4,
                 "languages": ["en"],
+                "bounds": "103.75693,13.31905,104.00830,13.51654",
             },
         ]
         
@@ -99,25 +103,65 @@ Get layer 1 data for given bounding box.
             "name": "Prague",
             "photos": ["http://lorempixel.com/800/533/"],
             "description": "row 1\n@tour:t1\nrow 2\n@tour:t2\nrow 3",
+            "languages": ["en", "cs", "de"],
+            "bounds": "14.22444,49.94190,14.70679,50.17743",
             "tours": [
                 {
                     "id": "t1",
+                    "languages": ["en", "cs"],
                     "name": "Prague in half day",
                     "photos": ["http://lorempixel.com/800/533/"],
+                    "tags": [],
                     "distance": 5000,
                     "duration": 240,
                     "sightCount": 10,
                 },
                 {
                     "id": "t2",
+                    "languages": ["en", "de", "cs"],
                     "name": "Prague in 1 day",
                     "photos": ["http://lorempixel.com/800/533/"],
+                    "tags": ["official"],
                     "distance": 10000,
                     "duration": 480,
                     "sightCount": 10,
                 },
             ]
         }
+        
+### Data for Destination map [GET /destinations/{id}/map{?language}]
+
++ Parameters
+    + id (string) - An unique identifier of the destination.
+    + language (string, optional) - language the content should be returned in.
+        + Default "en"
+
++ Request
+    + Parameters
+        + id: 1
+
++ Response 200 (application/json)
+
+        {
+            "tours": [
+                {
+                    "id": "t1",
+                    "route": "14.39924700000006,50.088502,0\n14.398454000000015,50.088449,0",
+                },
+                {
+                    "id": "t2",
+                    "route": "14.399058999999966,50.090038,0\n14.399080000000026,50.090139,0",
+                },
+            ],
+            "sights": [
+                {
+                    "id": "s1",
+                    "name": "sight 1",
+                    
+                }
+            ]
+        }
+
 
 ### Dowload data for offline use [GET /destinations/{id}/download{?language}]
 
@@ -142,10 +186,15 @@ Get layer 1 data for given bounding box.
 
         {
             "id": "t1",
+            "languages": ["en", "cs"],
             "name": "Prague in half day",
             "photos": ["http://lorempixel.com/800/533/"],
+            "tags": [],
             "distance": 5000,
             "duration": 240,
+            "sights": [
+                
+            ]
         }
         
 ### Dowload data for offline use [GET /tours/{id}/download{?language}]
@@ -160,6 +209,12 @@ Get layer 1 data for given bounding box.
 ## Tours and activities [/activities]
 
 ### List T&As nearby [GET /activities/{location}{?language, offset, skip}]
+
++ Response 200 (application/json)
+
+        []
+        
+### List T&As for given sight [GET /pois/{id}/activities{?language, offset, skip}]
 
 + Response 200 (application/json)
 
