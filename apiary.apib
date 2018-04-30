@@ -4,7 +4,9 @@ FORMAT: 1A
 
 Backend for SmartGuide mobile app...
 
-## Layer 1 [/layer1?box={west},{south},{east},{north}]
+## Layer 1 [/layer1]
+
+### Get data for region [GET /layer1?box={west},{south},{east},{north}]
 
 Get layer 1 data for given bounding box.
 
@@ -13,8 +15,6 @@ Get layer 1 data for given bounding box.
     + south (number)
     + east (number)
     + north (number)
-
-### Get data for region [GET]
 
 + Response 200 (application/json)
 
@@ -156,3 +156,11 @@ Get layer 1 data for given bounding box.
             "size": 1024,
             "url": "http://some.file.here",
         }
+        
+## Tours and activities [/activities]
+
+### List T&As nearby [GET /activities/{location}{?language, offset, skip}]
+
++ Response 200 (application/json)
+
+        []
