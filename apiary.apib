@@ -58,7 +58,7 @@ Get layer 1 data for given bounding box.
             }
         ]
 
-+ Request
++ Request nearby
     + Parameters
         + location: "50.0597749,14.1861029"
         
@@ -92,7 +92,7 @@ Get layer 1 data for given bounding box.
     + language (string, optional) - language the content should be returned in.
         + Default "en"
 
-+ Request
++ Request Prague
     + Parameters
         + id: 1
 
@@ -136,13 +136,14 @@ Get layer 1 data for given bounding box.
     + language (string, optional) - language the content should be returned in.
         + Default "en"
 
-+ Request
++ Request Prague
     + Parameters
         + id: 1
 
 + Response 200 (application/json)
 
         {
+            "bounds": "14.22444,49.94190,14.70679,50.17743",
             "tours": [
                 {
                     "id": "t1",
@@ -157,7 +158,9 @@ Get layer 1 data for given bounding box.
                 {
                     "id": "s1",
                     "name": "sight 1",
-                    
+                    "location": "14.428461,50.088095,0",
+                    "marker": "discovering:museum", //Sygic-style syntax
+                    "tags": ["must see"],
                 }
             ]
         }
